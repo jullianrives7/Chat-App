@@ -1,0 +1,23 @@
+### Server check
+GET http://localhost:3003/
+
+### Get all users
+GET http://localhost:3003/users
+
+### Get last 100 messages
+GET http://localhost:3003/last100messages
+
+### Get last 50 messages
+GET http://localhost:3003/last50messages
+
+### Add New User
+POST  http://localhost:3003/addGuest
+Content-Type: application/json
+
+{"name": "John"}
+
+### Add New Message
+POST  http://localhost:3003/addMessage
+Content-Type: application/json
+
+{"message": "LESSGOOOOOO", "send_date": "2023-01-05 16:46:00", "username": "John"}
