@@ -1,7 +1,3 @@
-# --- **OPTIMIZED WEBSOCKET BRANCH** ---
-
-#
-
 ## --------------- _Galvanize MCSP-16 Team 1_ ---------------
 
 # System Design Capstone Project : Chat App
