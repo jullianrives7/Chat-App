@@ -10,6 +10,7 @@ function App() {
   const [newUser, setNewUser] = useState(false);
   const [chatData, setChatData] = useState();
   const [userList, setUserList] = useState();
+  const ApiUrl = "https://chat-app-api-server.onrender.com";
 
   const contextData = {
     continueAsGuest,
@@ -26,16 +27,17 @@ function App() {
     setChatData,
     userList,
     setUserList,
+    ApiUrl,
   };
 
   useEffect(() => {
-    fetch("http://localhost:3003/users")
+    fetch(`${ApiUrl}/users`)
       .then((res) => res.json())
       .then((data) => setUserList(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3003/users")
+    fetch(`${ApiUrl}/users`)
       .then((res) => res.json())
       .then((data) => setUserList(data))
       .then(setNewUser(false));
@@ -43,7 +45,7 @@ function App() {
 
   //Preloads initial chat data
   useEffect(() => {
-    fetch("http://localhost:3003/last50messages")
+    fetch(`${ApiUrl}/last50messages`)
       .then((res) => res.json())
       .then((data) => setChatData(data));
   }, []);
