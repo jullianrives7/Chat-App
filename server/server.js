@@ -18,14 +18,13 @@ pool.connect();
 // ------------------------------ ROUTES ------------------------------ //
 
 app.get("/", (req, res) => {
-  res.send(`Hello World!... assigned to worker ${process.pid}`);
+  res.send(`Hello World!`);
 });
 
 app.get("/users", (req, res) => {
   pool
     .query("SELECT * FROM users")
     .then((result) => {
-      console.log(`/users request assigned to worker ${process.pid}`);
       res.status(200).send(result.rows);
     })
     .catch((err) => {
@@ -39,7 +38,6 @@ app.get("/last100messages", (req, res) => {
       `SELECT * FROM (SELECT * FROM messages ORDER BY message_id DESC limit 100) subquery ORDER BY message_id ASC`
     )
     .then((result) => {
-      console.log(`/last100Messages request assigned to worker ${process.pid}`);
       res.status(200).send(result.rows);
     })
     .catch((err) => {
@@ -53,7 +51,6 @@ app.get("/last50messages", (req, res) => {
       `SELECT * FROM (SELECT * FROM messages ORDER BY message_id DESC limit 50) subquery ORDER BY message_id ASC`
     )
     .then((result) => {
-      console.log(`/last50Messages request assigned to worker ${process.pid}`);
       res.status(200).send(result.rows);
     })
     .catch((err) => {
@@ -67,7 +64,6 @@ app.post("/addGuest", (req, res) => {
   pool
     .query(queryString, [name])
     .then((result) => {
-      console.log(`/addGuest request assigned to worker ${process.pid}`);
       res.json({ user_id: result.rows[0].user_id });
     })
     .catch((err) => {
@@ -84,7 +80,6 @@ app.post("/addMessage", (req, res) => {
   pool
     .query(queryString, [message, send_date, username])
     .then((result) => {
-      console.log(`/addMessage request assigned to worker ${process.pid}`);
       res.status(200).send(`message added successfully`);
     })
     .catch((err) => {
@@ -96,9 +91,7 @@ app.post("/addMessage", (req, res) => {
 
 //Defines app server for Websocket to connect to
 const server = app.listen(PORT, () => {
-  console.log(
-    `Our app is running on port: ${PORT}.... 🚀 server ${process.pid} @ http://localhost:3003`
-  );
+  console.log(`🚀 Our app is running on port: ${PORT}`);
 });
 
 //Websocket Server - connects into app server^^^
