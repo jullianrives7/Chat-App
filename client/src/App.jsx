@@ -11,6 +11,7 @@ function App() {
   const [chatData, setChatData] = useState();
   const [userList, setUserList] = useState();
   const ApiUrl = "https://chat-app-api-server.onrender.com";
+  const WsUrl = "wss://chat-app-api-server.onrender.com";
 
   const contextData = {
     continueAsGuest,
@@ -28,6 +29,7 @@ function App() {
     userList,
     setUserList,
     ApiUrl,
+    WsUrl,
   };
 
   useEffect(() => {

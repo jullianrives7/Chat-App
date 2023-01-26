@@ -13,7 +13,7 @@ const LiveChatPage = () => {
     chatData,
     setChatData,
     currentUserData,
-    ApiUrl,
+    WsUrl,
   } = useContext(appContext);
 
   const ws = useRef();
@@ -40,7 +40,7 @@ const LiveChatPage = () => {
   //Initialized websocket connection on load
   useEffect(() => {
     // ws.current = new WebSocket("ws://localhost:3003");
-    ws.current = new WebSocket(`ws://${ApiUrl}`);
+    ws.current = new WebSocket(`${WsUrl}`);
     ws.current.onopen = () => {
       console.log("WS connection opened!");
       setConnectionOpen(true);
