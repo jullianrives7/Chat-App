@@ -93,6 +93,7 @@ app.post("/addMessage", (req, res) => {
 const server = app.listen(PORT, () => {
   console.log(`🚀 Our app is running on port: ${PORT}`);
 });
+server;
 
 //Websocket Server - connects into app server^^^
 const wss = new WebSocket.Server({ server });
